@@ -1,16 +1,56 @@
 # reference-data-text
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+Displays the description or long value given a code from reference data.
 
-Describe reference-data-text here.
+For example `au` will be displayed as `Australia`
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+```
+<ReferenceDataText type="countries" value="au"/>
+```  
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+> Note this only works if it deployed under the same domain as the reference data service.
+
+> Or use a proxy.
+
+## Usage
+
+### Install
+```
+npm i @react-ag-components/reference-data-text --save
+```
+### Use in your project
+```
+import ReferenceDataText from '@react-ag-components/reference-data-text'
+```
+
+```
+<ReferenceDataText type="countries" value="au"/>
+```
+
+### Properties
+
+
+## Contributing
+
+Get the repository
+```
+git clone https://github.com/alphillips/reference-data-text.git
+```
+
+Update dependencies
+```
+npm install
+```
+
+Run the project
+```
+npm start
+```
+
+### Deploy to npm
+#### Build
+`npm run build -- --copy-files`
+
+#### Publish
+`npm publish --access public`
