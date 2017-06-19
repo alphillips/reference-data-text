@@ -38,7 +38,7 @@ class ReferenceDataText extends React.Component {
   }
 
   getRefDataText = (type, value) => {
-    let urlPrefix = '/clientportal/rs/resources/ref/'
+    let urlPrefix = '/api/refdata/'
     return new Promise(
       (resolve, reject) => {
         fetch(urlPrefix + type + '/' + value, { credentials: 'same-origin' }).then(
