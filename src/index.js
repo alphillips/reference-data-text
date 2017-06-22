@@ -7,6 +7,7 @@ class ReferenceDataText extends React.Component {
     this.state = {
       text: ''
     }
+    this.host = process.env.API_HOST || ''
   }
 
   componentDidMount() {
@@ -38,7 +39,7 @@ class ReferenceDataText extends React.Component {
   }
 
   getRefDataText = (type, value) => {
-    let urlPrefix = '/api/refdata/'
+    let urlPrefix = this.host + '/api/refdata/'
     return new Promise(
       (resolve, reject) => {
         fetch(urlPrefix + type + '/' + value, { credentials: 'same-origin' }).then(
