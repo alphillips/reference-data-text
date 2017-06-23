@@ -13,6 +13,17 @@ class ReferenceDataText extends React.Component {
   componentDidMount() {
     const { type, value } = this.props;
 
+    if(!this.props.noCache){
+      if(window.referenceDataTextCache){
+        if(window.referenceDataTextCache[type + '-' + value]){
+          this.setState({
+            text: window.referenceDataTextCache[type + '-' + value]
+          })
+          return
+        }
+      }
+    }
+
     if(value){
       this.getRefDataText(type, value).then(
         result => {
@@ -26,6 +37,17 @@ class ReferenceDataText extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { type, value } = nextProps;
+
+    if(!this.props.noCache){
+      if(window.referenceDataTextCache){
+        if(window.referenceDataTextCache[type + '-' + value]){
+          this.setState({
+            text: window.referenceDataTextCache[type + '-' + value]
+          })
+          return
+        }
+      }
+    }
 
     if(value){
       this.getRefDataText(type, value).then(
@@ -47,6 +69,14 @@ class ReferenceDataText extends React.Component {
             if (response.status === 200) {
               response.text().then(data => {
                 resolve(JSON.parse(data))
+
+                if(!this.props.noCache){
+                  if(!window.referenceDataTextCache){
+                    window.referenceDataTextCache = []
+                  }
+                  window.referenceDataTextCache[type + '-' + value] = JSON.parse(data)
+                }
+
               });
             }
           }
