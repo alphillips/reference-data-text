@@ -68,13 +68,13 @@ class ReferenceDataText extends React.Component {
           response => {
             if (response.status === 200) {
               response.text().then(data => {
-                resolve(JSON.parse(data))
+                resolve(data)
 
                 if(!this.props.noCache){
                   if(!window.referenceDataTextCache){
                     window.referenceDataTextCache = []
                   }
-                  window.referenceDataTextCache[type + '-' + value] = JSON.parse(data)
+                  window.referenceDataTextCache[type + '-' + value] = data
                 }
 
               });
